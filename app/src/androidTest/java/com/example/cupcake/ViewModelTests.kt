@@ -1,4 +1,7 @@
 package com.example.cupcake
 
-class ViewModelTests {g
+class ViewModelTests {
+
+
+
 }
