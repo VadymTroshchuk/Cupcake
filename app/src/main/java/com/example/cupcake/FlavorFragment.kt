@@ -35,24 +35,17 @@ class FlavorFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.apply {
-            nextButton.setOnClickListener { goToNextScreen() }
             lifecycleOwner = viewLifecycleOwner
-
             viewModel = sharedViewModel
+            flavorFragment = this@FlavorFragment
         }
     }
 
-    /**
-     * Navigate to the next screen to choose a pickup date.
-     */
-    private fun goToNextScreen() {
+
+     fun goToNextScreen() {
         findNavController().navigate(R.id.action_flavorFragment_to_pickupFragment)
     }
 
-    /**
-     * This fragment lifecycle method is called when the view hierarchy associated with the fragment
-     * is being removed. As a result, clear out the binding object.
-     */
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
