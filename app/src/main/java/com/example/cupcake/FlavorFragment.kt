@@ -1,16 +1,15 @@
-
 package com.example.cupcake
 
-import OrderViewModel
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.cupcake.databinding.FragmentFlavorBinding
+import com.example.cupcake.model.OrderViewModel
 
 /**
  * [FlavorFragment] allows a user to choose a cupcake flavor for the order.
@@ -18,10 +17,9 @@ import com.example.cupcake.databinding.FragmentFlavorBinding
 class FlavorFragment : Fragment() {
 
     // Binding object instance corresponding to the fragment_flavor.xml layout
-    // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
-    // when the view hierarchy is attached to the fragment.
     private var binding: FragmentFlavorBinding? = null
 
+    // Use by activityViewModels to create a ViewModel scoped to the activity
     private val sharedViewModel: OrderViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -38,13 +36,16 @@ class FlavorFragment : Fragment() {
 
         binding?.apply {
             nextButton.setOnClickListener { goToNextScreen() }
+
+
+            viewModel = sharedViewModel
         }
     }
 
     /**
-     * Navigate to the next screen to choose pickup date.
+     * Navigate to the next screen to choose a pickup date.
      */
-    fun goToNextScreen() {
+    private fun goToNextScreen() {
         findNavController().navigate(R.id.action_flavorFragment_to_pickupFragment)
     }
 

@@ -1,7 +1,6 @@
 
 package com.example.cupcake
 
-import OrderViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.cupcake.databinding.FragmentSummaryBinding
+import com.example.cupcake.model.OrderViewModel
 
 /**
  * [SummaryFragment] contains a summary of the order details with a button to share the order
@@ -39,6 +39,8 @@ class SummaryFragment : Fragment() {
 
         binding?.apply {
             sendButton.setOnClickListener { sendOrder() }
+
+            viewModel = sharedViewModel
         }
     }
 
